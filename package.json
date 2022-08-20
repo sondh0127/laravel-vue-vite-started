@@ -4,9 +4,14 @@
         "dev": "vite",
         "build-ssr": "vite build --ssr",
         "build": "vite build && npm run build-ssr",
-        "build-tsc": "vue-tsc --noEmit && npm run build"
+        "build-tsc": "vue-tsc --noEmit && npm run build",
+        "lint:fix": "eslint --fix ./resources/js --ext .js,.vue,.ts"
+    },
+    "dependencies": {
+        "@unocss/reset": "^0.45.8"
     },
     "devDependencies": {
+        "@antfu/eslint-config": "^0.26.1",
         "@iconify-json/carbon": "^1.1.7",
         "@inertiajs/inertia": "^0.11.0",
         "@inertiajs/inertia-vue3": "^0.6.0",
@@ -15,6 +20,7 @@
         "@vitejs/plugin-vue": "^3.0.0",
         "@vue/server-renderer": "^3.2.31",
         "axios": "^0.27",
+        "eslint": "^8.22.0",
         "laravel-vite-plugin": "^0.5.0",
         "lodash": "^4.17.19",
         "typescript": "^4.6.4",
@@ -22,8 +28,5 @@
         "vite": "^3.0.0",
         "vue": "^3.2.31",
         "vue-tsc": "^0.39.5"
-    },
-    "dependencies": {
-        "@unocss/reset": "^0.45.8"
     }
 }
