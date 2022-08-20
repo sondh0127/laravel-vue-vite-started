@@ -1,5 +1,5 @@
 import { defineConfig, presetAttributify, presetIcons, presetUno, presetWebFonts, transformerVariantGroup, transformerDirectives } from 'unocss'
-
+import { formPreflight } from './resources/js/unocss-forms'
 
 export function createConfig({ strict = true, dev = true } = {}) {
     return defineConfig({
@@ -13,11 +13,13 @@ export function createConfig({ strict = true, dev = true } = {}) {
         ],
         presets: [
             presetAttributify(),
-            presetIcons({
-                collections: {
-                    carbon: () => import('@iconify-json/carbon/icons.json').then(i => i.default as any),
-                },
-            }),
+            presetIcons(
+                {
+                    collections: {
+                        carbon: () => import('@iconify-json/carbon/icons.json').then(i => i.default as any),
+                    },
+                }
+            ),
             presetWebFonts({
                 provider: 'bunny',
                 fonts: {
@@ -28,9 +30,12 @@ export function createConfig({ strict = true, dev = true } = {}) {
 
         ],
         transformers: [
-            //   transformerVariantGroup(),
+            transformerVariantGroup(),
             transformerDirectives(),
         ],
+        preflights: [
+            formPreflight,
+        ]
     })
 }
 
