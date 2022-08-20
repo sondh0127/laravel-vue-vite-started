@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite';
 import Laravel from 'laravel-vite-plugin';
 import Vue from '@vitejs/plugin-vue';
+import Unocss from 'unocss/vite'
 
 export default defineConfig({
     plugins: [
@@ -18,6 +19,7 @@ export default defineConfig({
                 },
             },
         }),
+        Unocss({}),
     ],
     ssr: {
         noExternal: ['@inertiajs/server'],
