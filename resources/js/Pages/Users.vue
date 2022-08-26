@@ -1,9 +1,11 @@
 <script lang="ts" setup>
-
+import Guest from '../Layouts/Guest.vue'
 </script>
 
 <template>
-    <div>
-        Users
-    </div>
+    <Guest>
+        <div>
+            Users
+        </div>
+    </Guest>
 </template>

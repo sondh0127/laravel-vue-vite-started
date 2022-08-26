@@ -1,10 +1,12 @@
 <script lang="ts" setup>
-
+import Guest from '../Layouts/Guest.vue'
 </script>
 
 <template>
     <Head title="Settings" />
-    <div>
-        Settings
-    </div>
+    <Guest>
+        <div>
+            Settings
+        </div>
+    </Guest>
 </template>
