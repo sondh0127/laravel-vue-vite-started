@@ -29,10 +29,12 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/users', function () {
+    sleep(2);
     return Inertia::render('Users');
 });
 
 Route::get('/settings', function () {
+     sleep(2);
     return Inertia::render('Settings');
 });
 
