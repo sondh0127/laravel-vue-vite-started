@@ -8,7 +8,7 @@
         "lint:fix": "eslint --fix ./resources/js --ext .js,.vue,.ts"
     },
     "dependencies": {
-        "@unocss/reset": "^0.45.8",
+        "@unocss/reset": "^0.45.13",
         "@vueuse/core": "^9.1.1"
     },
     "devDependencies": {
@@ -19,18 +19,18 @@
         "@inertiajs/progress": "^0.2.7",
         "@inertiajs/server": "^0.1.0",
         "@types/ziggy-js": "^1.3.2",
-        "@vitejs/plugin-vue": "^3.0.0",
-        "@vue/server-renderer": "^3.2.31",
-        "axios": "^0.27",
-        "eslint": "^8.22.0",
-        "laravel-vite-plugin": "^0.5.0",
-        "lodash": "^4.17.19",
-        "typescript": "^4.6.4",
-        "unocss": "^0.45.8",
+        "@vitejs/plugin-vue": "^3.0.3",
+        "@vue/server-renderer": "^3.2.37",
+        "axios": "^0.27.2",
+        "eslint": "^8.23.0",
+        "laravel-vite-plugin": "^0.6.0",
+        "lodash": "^4.17.21",
+        "typescript": "^4.8.2",
+        "unocss": "^0.45.13",
         "unplugin-auto-import": "^0.11.2",
         "unplugin-vue-components": "^0.22.4",
-        "vite": "^3.0.0",
-        "vue": "^3.2.31",
-        "vue-tsc": "^0.39.5"
+        "vite": "^3.0.9",
+        "vue": "^3.2.37",
+        "vue-tsc": "^0.40.1"
     }
 }
