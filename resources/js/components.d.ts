@@ -12,12 +12,15 @@ declare module '@vue/runtime-core' {
     Checkbox: typeof import('./Components/Checkbox.vue')['default']
     Dropdown: typeof import('./Components/Dropdown.vue')['default']
     DropdownLink: typeof import('./Components/DropdownLink.vue')['default']
+    FlowbiteTable: typeof import('./Components/FlowbiteTable.vue')['default']
     Head: typeof import('@inertiajs/inertia-vue3')['Head']
     Input: typeof import('./Components/Input.vue')['default']
     InputError: typeof import('./Components/InputError.vue')['default']
     Label: typeof import('./Components/Label.vue')['default']
     Link: typeof import('@inertiajs/inertia-vue3')['Link']
     NavLink: typeof import('./Components/NavLink.vue')['default']
+    PrelineTable: typeof import('./Components/PrelineTable.vue')['default']
     ResponsiveNavLink: typeof import('./Components/ResponsiveNavLink.vue')['default']
+    Table: typeof import('./Components/Table.vue')['default']
   }
 }

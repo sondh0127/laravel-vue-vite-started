@@ -5,6 +5,7 @@ import Vue from '@vitejs/plugin-vue'
 import Unocss from 'unocss/vite'
 import Components from 'unplugin-vue-components/vite'
 import AutoImport from 'unplugin-auto-import/vite'
+import VueMacros from 'unplugin-vue-macros/vite'
 
 export default defineConfig({
     resolve: {
@@ -19,6 +20,7 @@ export default defineConfig({
             ssr: 'resources/js/ssr.ts',
             refresh: true,
         }),
+        VueMacros({}),
         Vue({
             reactivityTransform: true,
             template: {
@@ -48,6 +50,11 @@ export default defineConfig({
                 {
                     'ziggy-js': [
                         ['default', 'route'],
+                    ],
+                },
+                {
+                    '@inertiajs/inertia-vue3': [
+                        'usePage',
                     ],
                 },
             ],

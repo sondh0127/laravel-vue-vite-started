@@ -43,6 +43,7 @@ class HandleInertiaRequests extends Middleware
                     'location' => $request->url(),
                 ]);
             },
+            'user' => 'Son Hong Do'
         ]);
     }
 }

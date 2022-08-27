@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { Head } from '@inertiajs/inertia-vue3'
 import BreezeAuthenticatedLayout from '@/Layouts/Authenticated.vue'
 </script>

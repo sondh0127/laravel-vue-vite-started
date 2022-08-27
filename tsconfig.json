@@ -20,7 +20,10 @@
             "@/*": [
                 "resources/js/*"
             ]
-        }
+        },
+        "types": [
+            "unplugin-vue-macros/macros-global"
+        ]
     },
     "include": [
         "resources/js/**/*.ts",

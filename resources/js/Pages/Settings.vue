@@ -1,12 +1,14 @@
 <script lang="ts" setup>
-import Guest from '../Layouts/Guest.vue'
+const page = usePage()
+const name = computed(() => page.props.value.user)
 </script>
 
 <template>
     <Head title="Settings" />
-    <Guest>
+    <div class="h-screen">
         <div>
-            Settings
+            Welcome back {{ name }}
         </div>
-    </Guest>
+        Settings
+    </div>
 </template>

@@ -33,12 +33,6 @@ const props = defineProps<Props>()
                 >
                     Register
                 </Link>
-                <Link href="users" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">
-                    Users
-                </Link>
-                <Link href="settings" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">
-                    Settings
-                </Link>
             </template>
         </div>
 

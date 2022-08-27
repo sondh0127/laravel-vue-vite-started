@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -29,13 +30,22 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/users', function () {
-    sleep(2);
-    return Inertia::render('Users');
+    return Inertia::render('Users', [
+        'time' => now()->toTimeString(),
+        'users' => User::paginate()->through(fn ($user) =>  [
+            'id' => $user->id,
+            'name' => $user->name
+        ])
+    ]);
 });
 
 Route::get('/settings', function () {
-     sleep(2);
     return Inertia::render('Settings');
 });
+
+Route::post('/logout2', function () {
+    dd(request('foo'));
+});
+
 
 require __DIR__.'/auth.php';
