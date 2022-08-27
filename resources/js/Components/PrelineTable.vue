@@ -2,10 +2,7 @@
 import { Link } from '@inertiajs/inertia-vue3'
 const props = defineProps<{
     users: {
-        data: {
-            id: string
-            name: string
-        }[]
+        data: App.Models.User[]
         links: {
             url: string | null
             active: boolean

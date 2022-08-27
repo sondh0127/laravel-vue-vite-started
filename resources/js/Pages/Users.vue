@@ -1,7 +1,9 @@
 <script lang="ts" setup>
 interface Props {
     time: string
-    users: any
+    users: {
+        data: App.Models.User[]
+    }
 }
 
 const props = defineProps<Props>()
