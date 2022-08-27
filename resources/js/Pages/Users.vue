@@ -4,15 +4,27 @@ interface Props {
     users: {
         data: App.Models.User[]
     }
+    filters: {
+        search: string
+    }
 }
 
 const props = defineProps<Props>()
+
+const search = ref(props.filters.search)
+
+watchThrottled(search, (newSearch) => {
+    Inertia.get('/users', { search: newSearch }, {
+        preserveState: true,
+        replace: true,
+    })
+}, { throttle: 500 })
 </script>
 
 <template>
     <div class="h-screen">
         Users {{ $page.props.user }}
-        <PrelineTable :users="users" />
+        <PrelineTable v-model:search="search" :users="users" />
     </div>
 
     <div class="">

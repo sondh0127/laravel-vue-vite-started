@@ -9,7 +9,10 @@ const props = defineProps<{
             label: string
         }[]
     }
+    search?: string
 }>()
+
+const searchModel = useVModel(props, 'search', undefined, { passive: true, defaultValue: '' })
 </script>
 
 <template>
@@ -22,7 +25,8 @@ const props = defineProps<{
                             <div class="relative max-w-xs">
                                 <label for="hs-table-with-pagination-search" class="sr-only">Search</label>
                                 <input
-                                    id="hs-table-with-pagination-search" type="text"
+                                    id="hs-table-with-pagination-search"
+                                    v-model="searchModel" type="text"
                                     name="hs-table-with-pagination-search"
                                     class="p-3 pl-10 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400"
                                     placeholder="Search for items"

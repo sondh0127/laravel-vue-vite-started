@@ -3,6 +3,7 @@
     "rules": {
         "@typescript-eslint/indent": ["error", 4],
         "vue/html-indent": ["error", 4],
-        "jsonc/indent": ["error", 4]
+        "jsonc/indent": ["error", 4],
+        "prefer-const": "off"
     }
 }

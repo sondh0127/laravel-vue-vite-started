@@ -20,7 +20,7 @@ export default defineConfig({
             ssr: 'resources/js/ssr.ts',
             refresh: true,
         }),
-        VueMacros({}),
+        VueMacros({ version: 3, defineModel: true }),
         Vue({
             reactivityTransform: true,
             template: {
@@ -55,6 +55,11 @@ export default defineConfig({
                 {
                     '@inertiajs/inertia-vue3': [
                         'usePage',
+                    ],
+                },
+                {
+                    '@inertiajs/inertia': [
+                        'Inertia',
                     ],
                 },
             ],
