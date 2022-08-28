@@ -2,7 +2,6 @@
 
 use App\Models\User;
 use Illuminate\Foundation\Application;
-use Illuminate\Http\Request as HttpRequest;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -19,58 +18,62 @@ use Nette\Utils\Random;
 |
 */
 
-Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-});
+Route::middleware('auth')->group(function () {
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+    Route::get('/', function () {
+        return Inertia::render('Welcome', [
+            'canLogin' => Route::has('login'),
+            'canRegister' => Route::has('register'),
+            'laravelVersion' => Application::VERSION,
+            'phpVersion' => PHP_VERSION,
+        ]);
+    });
 
-Route::get('/users', function () {
-    return Inertia::render('Users/Index', [
-        'time' => now()->toTimeString(),
-        'users' => User::query()
-            ->when(Request::input('search'), function ($query, $search) {
-                $query->where('name', 'like',  "%{$search}%");
-            })
-            ->paginate(10)
-            ->withQueryString()
-            ->through(fn ($user) =>  [
-                'id' => $user->id,
-                'name' => $user->name
-            ]),
-        'filters' => Request::only(['search'])
-    ]);
-});
+    Route::get('/dashboard', function () {
+        return Inertia::render('Dashboard');
+    })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::post('/users', function() {
-    $validatedData = Request::validate([
-        'name' => ['required', 'max:20'],
-        'email' => ['required', 'email'],
-        'password' => ['required', 'string', 'min:6'],
-    ]);
-    $validatedData['stripe_token'] = Random::generate(10);
-    User::create($validatedData);
+    Route::get('/users', function () {
+        return Inertia::render('Users/Index', [
+            'time' => now()->toTimeString(),
+            'users' => User::query()
+                ->when(Request::input('search'), function ($query, $search) {
+                    $query->where('name', 'like',  "%{$search}%");
+                })
+                ->paginate(10)
+                ->withQueryString()
+                ->through(fn ($user) =>  [
+                    'id' => $user->id,
+                    'name' => $user->name
+                ]),
+            'filters' => Request::only(['search'])
+        ]);
+    });
 
-    return redirect('/users');
-});
+    Route::post('/users', function () {
+        sleep(2);
+        $validatedData = Request::validate([
+            'name' => ['required', 'max:20'],
+            'email' => ['required', 'email'],
+            'password' => ['required', 'string', 'min:6'],
+        ]);
+        $validatedData['stripe_token'] = Random::generate(10);
+        User::create($validatedData);
 
-Route::get('/users/create', function () {
-    return Inertia::render('Users/Create');
-});
+        return redirect('/users');
+    });
 
-Route::get('/settings', function () {
-    return Inertia::render('Settings');
-});
+    Route::get('/users/create', function () {
+        return Inertia::render('Users/Create');
+    });
 
-Route::post('/logout2', function () {
-    dd(request('foo'));
+    Route::get('/settings', function () {
+        return Inertia::render('Settings');
+    });
+
+    Route::post('/logout2', function () {
+        dd(request('foo'));
+    });
 });
 
 

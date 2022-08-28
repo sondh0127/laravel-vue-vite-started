@@ -7,16 +7,20 @@ import { createApp, h } from 'vue'
 import { createInertiaApp } from '@inertiajs/inertia-vue3'
 import { InertiaProgress } from '@inertiajs/progress'
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers'
-import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.es'
+import { ZiggyVue } from '../../vendor/tightenco/ziggy/src/js/vue'
 import { Ziggy } from './ziggy'
 import Guest from './Layouts/Guest.vue'
+import Authenticated from './Layouts/Authenticated.vue'
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel'
 
 createInertiaApp({
     title: title => `${title} | ${appName}`,
     resolve: async (name) => {
+        console.log('[LOG] ~ file: app.ts ~ line 18 ~ name', name)
         const page = await resolvePageComponent(`./Pages/${name}.vue`, import.meta.glob('./Pages/**/*.vue')) as unknown as DefineComponent
-        page.default.layout ??= Guest
+        console.log('[LOG] ~ file: app.ts ~ line 19 ~ page', page)
+
+        page.default.layout = name.startsWith('Auth') ? Guest : (page.default.layout ?? Authenticated)
         return page
     },
     setup({ el, app, props, plugin }) {

@@ -1,6 +1,4 @@
-<script setup>
-import { ref } from 'vue'
-import { Link } from '@inertiajs/inertia-vue3'
+<script setup lang="ts">
 import BreezeApplicationLogo from '@/Components/ApplicationLogo.vue'
 import BreezeDropdown from '@/Components/Dropdown.vue'
 import BreezeDropdownLink from '@/Components/DropdownLink.vue'

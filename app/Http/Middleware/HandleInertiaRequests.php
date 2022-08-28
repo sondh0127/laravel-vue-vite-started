@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route as FacadesRoute;
 use Inertia\Middleware;
 use Tightenco\Ziggy\Ziggy;
 
@@ -43,7 +44,8 @@ class HandleInertiaRequests extends Middleware
                     'location' => $request->url(),
                 ]);
             },
-            'user' => 'Son Hong Do'
+            'canLogin' => FacadesRoute::has('login'),
+            'canRegister' => FacadesRoute::has('register'),
         ]);
     }
 }

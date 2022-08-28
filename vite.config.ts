@@ -10,7 +10,7 @@ import VueMacros from 'unplugin-vue-macros/vite'
 export default defineConfig({
     resolve: {
         alias: {
-            'ziggy-js': path.resolve('vendor/tightenco/ziggy/dist/index.m.js'),
+            'ziggy-js': path.resolve('vendor/tightenco/ziggy/src/js/index'),
             '@': path.resolve('resources/js'),
         },
     },
@@ -22,7 +22,7 @@ export default defineConfig({
         }),
         VueMacros({ version: 3, defineModel: true }),
         Vue({
-            reactivityTransform: /resources\/js\/.*\/.*.[vue,js,ts,jsx,tsx]/,
+            reactivityTransform: true,
             template: {
                 transformAssetUrls: {
                     base: null,

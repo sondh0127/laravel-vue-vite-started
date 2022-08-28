@@ -8,7 +8,7 @@ export {}
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     ApplicationLogo: typeof import('./Components/ApplicationLogo.vue')['default']
-    Button: typeof import('./Components/Button.vue')['default']
+    Button: typeof import('./Components/atoms/Button.vue')['default']
     Checkbox: typeof import('./Components/Checkbox.vue')['default']
     Dropdown: typeof import('./Components/Dropdown.vue')['default']
     DropdownLink: typeof import('./Components/DropdownLink.vue')['default']
