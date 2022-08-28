@@ -21,7 +21,7 @@ const searchModel = useVModel(props, 'search', undefined, { passive: true, defau
             <div class="-m-1.5 overflow-x-auto">
                 <div class="p-1.5 min-w-full inline-block align-middle">
                     <div class="border rounded-lg divide-y divide-gray-200 dark:border-gray-700 dark:divide-gray-700">
-                        <div class="py-3 px-4">
+                        <div class="py-3 px-4 flex items-center justify-between">
                             <div class="relative max-w-xs">
                                 <label for="hs-table-with-pagination-search" class="sr-only">Search</label>
                                 <input
@@ -41,6 +41,12 @@ const searchModel = useVModel(props, 'search', undefined, { passive: true, defau
                                         />
                                     </svg>
                                 </div>
+                            </div>
+
+                            <div>
+                                <Link href="users/create" type="button" class="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800">
+                                    Create
+                                </Link>
                             </div>
                         </div>
                         <div class="overflow-y-scroll max-h-500px">

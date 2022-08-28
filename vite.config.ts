@@ -22,7 +22,7 @@ export default defineConfig({
         }),
         VueMacros({ version: 3, defineModel: true }),
         Vue({
-            reactivityTransform: true,
+            reactivityTransform: /resources\/js\/.*\/.*.[vue,js,ts,jsx,tsx]/,
             template: {
                 transformAssetUrls: {
                     base: null,
@@ -47,6 +47,7 @@ export default defineConfig({
             imports: [
                 'vue',
                 '@vueuse/core',
+                'vue/macros',
                 {
                     'ziggy-js': [
                         ['default', 'route'],
@@ -55,6 +56,7 @@ export default defineConfig({
                 {
                     '@inertiajs/inertia-vue3': [
                         'usePage',
+                        'useForm',
                     ],
                 },
                 {

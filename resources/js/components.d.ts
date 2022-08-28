@@ -16,6 +16,7 @@ declare module '@vue/runtime-core' {
     Head: typeof import('@inertiajs/inertia-vue3')['Head']
     Input: typeof import('./Components/Input.vue')['default']
     InputError: typeof import('./Components/InputError.vue')['default']
+    InputField: typeof import('./Components/InputField.vue')['default']
     Label: typeof import('./Components/Label.vue')['default']
     Link: typeof import('@inertiajs/inertia-vue3')['Link']
     NavLink: typeof import('./Components/NavLink.vue')['default']

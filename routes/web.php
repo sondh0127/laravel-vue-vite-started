@@ -2,9 +2,11 @@
 
 use App\Models\User;
 use Illuminate\Foundation\Application;
+use Illuminate\Http\Request as HttpRequest;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use Nette\Utils\Random;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,7 +33,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/users', function () {
-    return Inertia::render('Users', [
+    return Inertia::render('Users/Index', [
         'time' => now()->toTimeString(),
         'users' => User::query()
             ->when(Request::input('search'), function ($query, $search) {
@@ -45,6 +47,22 @@ Route::get('/users', function () {
             ]),
         'filters' => Request::only(['search'])
     ]);
+});
+
+Route::post('/users', function() {
+    $validatedData = Request::validate([
+        'name' => ['required', 'max:20'],
+        'email' => ['required', 'email'],
+        'password' => ['required', 'string', 'min:6'],
+    ]);
+    $validatedData['stripe_token'] = Random::generate(10);
+    User::create($validatedData);
+
+    return redirect('/users');
+});
+
+Route::get('/users/create', function () {
+    return Inertia::render('Users/Create');
 });
 
 Route::get('/settings', function () {
